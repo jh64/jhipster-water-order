@@ -1,0 +1,51 @@
+{
+  "name": "WaterOrder",
+  "fields": [
+    {
+      "fieldName": "startTimestamp",
+      "fieldType": "Instant",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Integer",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "REQUESTED,INPROGRESS,DELIVERED,CANCELLED"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "waterOrder",
+      "relationshipName": "user",
+      "otherEntityField": "login"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "farm",
+      "otherEntityRelationshipName": "waterOrder",
+      "relationshipName": "farm",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20201113031830",
+  "entityTableName": "water_order",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

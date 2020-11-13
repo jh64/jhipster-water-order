@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="waterOrder">
+            <h2><span>Water Order</span> {{ waterOrder.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Start Timestamp</span></dt>
+                <dd>
+                    <span>{{ waterOrder.startTimestamp }}</span>
+                </dd>
+                <dt><span>Duration</span></dt>
+                <dd>
+                    <span>{{ waterOrder.duration }}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{ waterOrder.status }}</span>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    {{ waterOrder.user?.login }}
+                </dd>
+                <dt><span>Farm</span></dt>
+                <dd>
+                    <div *ngIf="waterOrder.farm">
+                        <a [routerLink]="['/farm', waterOrder.farm?.id, 'view']">{{ waterOrder.farm?.name }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/water-order', waterOrder.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
