@@ -57,6 +57,13 @@ public class WaterOrderResource {
         if (waterOrder.getId() != null) {
             throw new BadRequestAlertException("A new waterOrder cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        
+        /*TODO: jd - #4 The API must ensure the water orders for a farm do not overlap
+         *  For example, if Farm X already has an order for 30 Jan 2019 starting at 6am with a 3
+            hours duration, it should not allow Farm X to place an order starting at 8am on the
+            same day.
+         */
+        
         WaterOrder result = waterOrderService.save(waterOrder);
         return ResponseEntity.created(new URI("/api/water-orders/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
