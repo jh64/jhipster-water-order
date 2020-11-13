@@ -1,0 +1,24 @@
+enum Status {
+  REQUESTED, INPROGRESS, DELIVERED, CANCELLED
+}
+
+entity Farm {
+  name String required minlength(3)
+}
+
+entity WaterOrder {
+  startTimestamp Instant required,
+  duration Integer required,
+  status Status
+}
+
+relationship ManyToOne {
+  Farm{user(login)} to User,
+  WaterOrder{user(login)} to User,
+  
+  WaterOrder{farm(name)} to Farm
+}
+
+paginate WaterOrder with infinite-scroll
+
+service all with serviceImpl
