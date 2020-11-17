@@ -20,8 +20,8 @@ public class BatchJobScheduler {
 
   private JobExecution execution;
 
-  //TODO: jd - work out the cron job properly, e.g. every 5 minutes.
-  @Scheduled (cron = "* * * 5 * ?")
+  //TODO: jd - test the cron job properly - to be run every 5 minutes.
+  @Scheduled (cron = "0/5 * * * * ?")
   public void run() {
     try {
       execution = launcher.run(job, new JobParameters());
