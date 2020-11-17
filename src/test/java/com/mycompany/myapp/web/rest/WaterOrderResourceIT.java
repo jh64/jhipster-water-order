@@ -268,4 +268,15 @@ public class WaterOrderResourceIT {
         List<WaterOrder> waterOrderList = waterOrderRepository.findAll();
         assertThat(waterOrderList).hasSize(databaseSizeBeforeDelete - 1);
     }
+    
+    @Test
+    @Transactional
+    public void getAllWaterOrdersInprogressAndRunBatchTasklet() throws Exception {
+        // Initialize the database
+        waterOrderService.save(waterOrder);
+        
+        System.out.println("waterOrderRepository.findAll().size() - " + waterOrderRepository.findAll().size());
+        
+        //TODO: jd - implement and test the batch job function here - BatchJobTasklet.fuctionToRun()
+    }
 }
