@@ -318,6 +318,11 @@
             <artifactId>cucumber-spring</artifactId>
             <scope>test</scope>
         </dependency>
+	    <dependency>
+	        <groupId>org.springframework.batch</groupId>
+	        <artifactId>spring-batch-core</artifactId>
+	    </dependency>           
+        
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
 
